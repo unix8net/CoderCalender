@@ -1,0 +1,233 @@
+
+	<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta description="信则有，不信则无，总之作者不会对该程序生成的内容负任何责任。">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>程序员老黄历</title>
+	<script id="jquery_183" type="text/javascript" class="library" src="jquery.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="date">
+			</div>
+			<div class="good">
+				<div class="title">宜</div>
+				<div class="content">
+					<ul></ul>
+				</div>
+			</div>
+			<div class="split"></div>
+			<div class="bad">
+				<div class="title">不宜</div>
+				<div class="content">
+					<ul></ul>
+				</div>
+			</div>
+			<div class="split"></div>
+			<div class="direction">
+				<strong>座位朝向：</strong>面向<span class="direction_value"></span>写程序，BUG 最少。
+			</div>
+		</div>
+	</body>
+</html>
+    	<style>body * {
+	font-family:"Consolas","Microsoft Yahei", Arial, sans-serif;
+}
+
+body {
+	background: white;
+}
+
+.container {
+	width: 340px;
+	margin: 10px auto 50px;
+}
+
+.date{
+	font-size:18pt;
+	font-weight: bold;
+	line-height: 30pt;
+	text-align: center;
+}
+
+.split {
+	clear: both;
+	height: 10px;
+	overflow-y: hidden;
+}
+
+.good, .bad {
+	clear: both;
+	margin-top: 20px;
+}
+
+.good .title, .bad .title {
+	float: left;
+	width: 120px;
+	font-weight: bold;
+	height:140px;
+	text-align: center;
+	font-size: 30pt;
+	padding-top: 100px;
+}
+
+.good .title {
+	background: yellow;
+}
+
+.bad .title {
+	background: red;
+	color: #fff;
+}
+
+.good .content, .bad .content {
+	margin-left: 140px;
+	font-size:15pt;
+}
+
+.content ul {
+	list-style: none;
+	margin:10px 0 0;
+	padding:0;
+}
+
+.content ul li {
+	line-height:150%;
+	font-size: 15pt;
+	font-weight: bold;
+	color: #444;
+}
+
+.content ul li div.description {
+	font-size: 10pt;
+	font-weight: normal;
+	margin-left: 15px;
+	color: #777;
+	line-height: 110%;
+	margin-bottom: 10px;
+}
+
+.direction_value {
+	color:#4a4;
+	font-weight: bold;
+}</style>
+	    		<script>
+/*
+ * 注意：本程序中的“随机”都是伪随机概念，以当前的天为种子。
+ */
+function random(dayseed, indexseed) {
+	var n = iday % 10000;
+	var r;
+	for (var i = 0; i < 100 + indexseed; i++) {
+		n = n * n + 11117;
+		n = n % 11117;   // 11117 是个质数
+	}
+	return n;
+}
+
+var today = new Date();
+var iday = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+
+var weeks = ["日","一","二","三","四","五","六"];
+var directions = ["北方","东北方","东方","东南方","南方","西南方","西方","西北方"];
+var activities = [
+	{name:"写单元测试", good:"写单元测试将减少出错",bad:"写单元测试将使你无法完成今天的任务"},
+	{name:"抽烟", good:"抽烟有利于提神，增加思维敏捷",bad:"抽烟将继续减少你的寿命"},
+	{name:"白天上线", good:"今天白天上线是安全的",bad:"今天白天上线将会导致灾难性后果"},
+	{name:"吃方便面", good:"吃方便面有利于节省时间",bad:"吃方便面不利于减肥"},
+	{name:"使用%t", good:"你看起来更有品位",bad:"别人会觉得你在装逼"},
+	{name:"跳槽", good:"该放手时就放手",bad:"鉴于当前的经济形势，你的下一份工作未必比现在强"},
+	{name:"招人", good:"你遇到千里马的可能性大大增加",bad:"你只会招到一两个混饭吃的外行"},
+	{name:"面试", good:"面试官今天心情很好",bad:"面试官昨天被老婆骂了，今天会拿你出气"},
+	{name:"提交辞职申请", good:"公司找到了一个比你更能干更便宜的家伙，巴不得你赶快滚蛋",bad:"鉴于当前的经济形势，你的下一份工作未必比现在强"},
+	{name:"申请加薪", good:"老板今天心情很好",bad:"公司正在考虑裁员"},
+	{name:"吃盒饭", good:"你节省了时间用来写程序，可以早点下班",bad:"地沟油"},
+	{name:"晚上加班", good:"晚上是程序员精神最好的时候",bad:""},
+	{name:"与妹子说话", good:"",bad:""},
+	{name:"撸管", good:"避免缓冲区溢出",bad:"小撸怡情，大撸伤身，强撸灰飞烟灭"},
+	{name:"浏览成人网站", good:"重拾对生活的信心",bad:"你会心神不宁"},
+	{name:"写日报", good:"",bad:""},
+	{name:"写超过%l行的方法", good:"你的代码组织的很好，长一点没关系",bad:"你的代码将混乱不堪，你自己都看不懂"},
+	{name:"提交代码", good:"遇到冲突的几率是最低的",bad:"你遇到的一大堆冲突会让你觉得自己是不是时间穿越了"},
+	{name:"代码复审", good:"发现重要问题的几率大大增加",bad:"你什么问题都发现不了，白白浪费时间"},
+	{name:"开会", good:"写代码之余放松一下打个盹，有益健康",bad:"你会被扣屎盆子背黑锅"},
+	{name:"打DOTA", good:"你将有如神助",bad:"你会被虐的很惨"},
+	{name:"晚上上线", good:"晚上是程序员精神最好的时候",bad:"你白天已经筋疲力尽了"},
+	{name:"修复BUG", good:"你今天对BUG的嗅觉大大提高",bad:"新产生的BUG将比修复的更多"},
+	{name:"设计评审", good:"设计评审会议将变成头脑风暴",bad:"人人筋疲力尽，评审就这么过了"},
+	{name:"需求评审", good:"",bad:""},
+	{name:"上微博", good:"今天发生的事不能错过",bad:"会被老板看到"},
+	{name:"上AB站", good:"还需要理由吗？",bad:"会被老板看到"}
+];
+
+var tools = ["Eclipse写程序", "MSOffice写文档", "记事本写程序", "Windows", "Linux", "MacOS", "IE"];
+
+function getTodayString() {
+	return "今天是" + today.getFullYear() + "年" + (today.getMonth() + 1) + "月" + today.getDate() + "日 星期" + weeks[today.getDay()];
+}
+
+// 生成今日运势
+function pickTodaysLuck() {
+	var numGood = random(iday, 98) % 4 + 2;
+	var numBad = random(iday, 97) % 4 + 2;
+	var eventArr = pickRandom(numGood + numBad);
+	
+	for (var i = 0; i < numGood; i++) {
+		addToGood(eventArr[i]);
+	}
+	
+	for (var i = 0; i < numBad; i++) {
+		addToBad(eventArr[numGood + i]);
+	}
+}
+
+// 从 activities 中随机挑选 size 个
+function pickRandom(size) {
+	var result = [];
+	
+	for (var i = 0; i < activities.length; i++) {
+		result.push(parse(activities[i]));
+	}
+	
+	for (var j = 0; j < activities.length - size; j++) {
+		var index = random(iday, j) % result.length;
+		result.splice(index, 1);
+	}
+	
+	return result;
+}
+
+// 解析占位符并替换成随机内容
+function parse(event) {
+	var result = {name: event.name, good: event.good, bad: event.bad};  // clone
+	
+	if (result.name.indexOf('%t') != -1) {
+		result.name = result.name.replace('%t', tools[random(iday, 11) % tools.length]);
+	}
+	
+	if (result.name.indexOf('%l') != -1) {
+		result.name = result.name.replace('%l', (random(iday, 12) % 277).toString());
+	}
+	
+	return result;
+}
+
+// 添加到“宜”
+function addToGood(event) {
+	$('.good .content ul').append('<li><div class="name">' + event.name + '</div><div class="description">' + event.good + '</div></li>');
+}
+
+// 添加到“不宜”
+function addToBad(event) {
+	$('.bad .content ul').append('<li><div class="name">' + event.name + '</div><div class="description">' + event.bad + '</div></li>');
+}
+
+$(function(){
+	$('.date').html(getTodayString());
+	$('.direction_value').html(directions[random(iday, 2) % directions.length]);
+	pickTodaysLuck();
+});</script>
+	
+<!-- Generated by RunJS (Tue Feb 05 02:21:44 CST 2013) 1ms -->
