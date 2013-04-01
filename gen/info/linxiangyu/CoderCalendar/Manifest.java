@@ -1,4 +1,4 @@
-package com.example.CoderCalendar;
+package info.linxiangyu.CoderCalendar;
 
 /* This stub is for using by IDE only. It is NOT the Manifest class actually packed into APK */
 public final class Manifest {

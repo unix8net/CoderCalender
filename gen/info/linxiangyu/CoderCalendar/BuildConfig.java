@@ -1,5 +1,5 @@
 /** Automatically generated file. DO NOT MODIFY */
-package com.example.CoderCalendar;
+package info.linxiangyu.CoderCalendar;
 
 public final class BuildConfig {
     public final static boolean DEBUG = true;

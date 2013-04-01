@@ -1,9 +1,12 @@
 
 #程序员老皇历
 
-![img](http://ww1.sinaimg.cn/large/a74e55b4jw1e1hzabefhij.jpg)
+![img](http://ww3.sinaimg.cn/large/bfadf3bejw1e3a18e7ws5j.jpg)
 
-这个东西最早来自[这里](http://sandbox.runjs.cn/show/ydp3it7b)
+这个东西来自[这里](http://sandbox.runjs.cn/show/ydp3it7b)
+
+Android端源代码: <https://github.com/oa414/CoderCalender>
+
 
 觉得挺有意思。。而且具体实现赤裸裸的写在页面的JS里面。。也没什么。。想移植到Android。。
 
@@ -15,5 +18,5 @@
 - 把那个网页和需要的JQuery保存到Android本地
 - Done。
 
-然后花了好久找Mac下的图片编辑软件。。算了，随便弄了一个(DEC25 == OCT31)的文字当Logo。。不会PS的码农伤不起。。
+随便弄了一个(DEC25 == OCT31)的文字当Logo。。不会PS的码农伤不起。。欢迎会设计的同学来提供
 

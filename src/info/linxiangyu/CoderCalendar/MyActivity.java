@@ -1,4 +1,4 @@
-package com.example.CoderCalendar;
+package info.linxiangyu.CoderCalendar;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,7 @@ import android.webkit.*;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.VideoView;
+import com.example.CoderCalendar.R;
 
 public class MyActivity extends Activity {
     /**
