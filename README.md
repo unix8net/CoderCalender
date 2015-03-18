@@ -1,6 +1,14 @@
 
 #程序员老皇历
 
+没想到这个初学 Android 花10分钟写的玩票 App 会成为目前下载以及评论最多的个人作品 ＝＝
+
+不过这样一个没有请求任何权限以及仅仅 54K 大小的 App 也算一个良心应用了
+
+下载 APK 以及讨论可以到酷安：<http://m.coolapk.com/apk/info.linxiangyu.CoderCalendar> （评论有点被玩坏了。。）
+
+以及 Google Play: <https://play.google.com/store/apps/details?id=info.linxiangyu.CoderCalendar>
+
 ![img](http://ww3.sinaimg.cn/large/bfadf3bejw1e3a18e7ws5j.jpg)
 
 这个东西来自[这里](http://sandbox.runjs.cn/show/ydp3it7b)
